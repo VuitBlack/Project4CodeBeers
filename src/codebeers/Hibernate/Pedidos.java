@@ -1,30 +1,33 @@
 package codebeers.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="pedidos")
-public class pedidos {
+public class Pedidos {
 
     @Id
     @Column(name = "num")
     private int num;
 
     @Column(name = "cliente")
-    private clientes cliente;
+    private Clientes cliente;
 
     @Column(name = "articulo")
-    private articulos articulo;
+    private Articulos articulo;
     @Column(name = "cantidad")
     private int cantidad;
     @Column(name = "fechaHora")
     private LocalDateTime fechaHora;
 
-    public pedidos() {
+    public Pedidos() {
     }
 
-    public pedidos(int num, clientes cliente, articulos articulo, int cantidad, LocalDateTime fechaHora) {
+    public Pedidos(int num, Clientes cliente, Articulos articulo, int cantidad, LocalDateTime fechaHora) {
         this.num = num;
         this.cliente = cliente;
         this.articulo = articulo;
@@ -40,19 +43,19 @@ public class pedidos {
         this.num = num;
     }
 
-    public clientes getCliente() {
+    public Clientes getCliente() {
         return cliente;
     }
 
-    public void setCliente(clientes cliente) {
+    public void setCliente(Clientes cliente) {
         this.cliente = cliente;
     }
 
-    public articulos getArticulo() {
+    public Articulos getArticulo() {
         return articulo;
     }
 
-    public void setArticulo(articulos articulo) {
+    public void setArticulo(Articulos articulo) {
         this.articulo = articulo;
     }
 

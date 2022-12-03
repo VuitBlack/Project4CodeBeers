@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_entitymanager.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_orm_core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_persistence_api.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/articulos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/clientes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/pedidos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" afterDir="false" />
+    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/articulos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Articulos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/clientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/pedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Pedidos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +61,20 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.InsertarCliente">
+    <configuration name="InsertarCliente" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="codebeers.Hibernate.InsertarCliente" />
+      <module name="Project4CodeBeers" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="codebeers.Hibernate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OnlineStore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codebeers.vista.OnlineStore" />
       <module name="Project4CodeBeers" />
@@ -80,6 +90,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InsertarCliente" />
         <item itemvalue="Application.OnlineStore" />
       </list>
     </recent_temporary>
@@ -93,6 +104,14 @@
       <option name="presentableId" value="Default" />
       <updated>1669923811327</updated>
     </task>
+    <task id="LOCAL-00001" summary="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final">
+      <created>1670088089759</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670088089759</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,5 +124,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -1,10 +1,13 @@
 package codebeers.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="articulos")
-public class articulos {
+@Table(name="Articulos")
+public class Articulos {
 
     @Id
     @Column(name="id")
@@ -18,7 +21,7 @@ public class articulos {
     @Column(name="preparacion")
     private int preparacion;
 
-    public articulos(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
+    public Articulos(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
         this.id = id;
         this.descripcion = descripcion;
         this.pvp = pvp;
@@ -26,7 +29,7 @@ public class articulos {
         this.preparacion = preparacion;
     }
 
-    public articulos() {
+    public Articulos() {
     }
 
     public String getId() {

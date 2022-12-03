@@ -1,10 +1,13 @@
 package codebeers.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="clientes")
-public class clientes {
+@Table(name="Clientes")
+public class Clientes {
 
     @Id
     @Column(name="email")
@@ -22,10 +25,10 @@ public class clientes {
     @Column(name="tipoCliente")
     public String tipoCliente;
 
-    public clientes() {
+    public Clientes() {
     }
 
-    public clientes(String email, String nombre, String domicilio, String nif, String tipoCliente) {
+    public Clientes(String email, String nombre, String domicilio, String nif, String tipoCliente) {
         this.email = email;
         this.nombre = nombre;
         this.domicilio = domicilio;
