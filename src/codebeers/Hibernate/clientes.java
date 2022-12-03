@@ -1,0 +1,86 @@
+package codebeers.Hibernate;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="clientes")
+public class clientes {
+
+    @Id
+    @Column(name="email")
+    public String email;
+
+    @Column(name="nombre")
+    public String nombre;
+
+    @Column(name="domicilio")
+    public String domicilio;
+
+    @Column(name="nif")
+    public String nif;
+
+    @Column(name="tipoCliente")
+    public String tipoCliente;
+
+    public clientes() {
+    }
+
+    public clientes(String email, String nombre, String domicilio, String nif, String tipoCliente) {
+        this.email = email;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.nif = nif;
+        this.tipoCliente = tipoCliente;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    @Override
+    public String toString() {
+        return "cliente{" +
+                "email='" + email + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                ", nif='" + nif + '\'' +
+                ", tipoCliente='" + tipoCliente + '\'' +
+                '}';
+    }
+}

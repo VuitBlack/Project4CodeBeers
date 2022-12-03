@@ -2,28 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/controlador/Controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/ElementoNoExiste.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/ElementoYaExiste.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/ListaEstaVacia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/OnlineStoreException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/OpcionNoValida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/exceptions/PedidoYaPreparado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Articulo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Datos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Estandar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Lista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/ListaArticulos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/ListaClientes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/ListaPedidos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Pedido.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/modelo/Premium.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/vista/GestionOS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/vista/OnlineStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_entitymanager.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_orm_core.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_persistence_api.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/articulos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/clientes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/pedidos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -58,21 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.22077923",
-    "project.structure.side.proportion": "0.29209185",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.22077923&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29209185&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="OnlineStore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codebeers.vista.OnlineStore" />

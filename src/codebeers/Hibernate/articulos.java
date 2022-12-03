@@ -1,0 +1,83 @@
+package codebeers.Hibernate;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="articulos")
+public class articulos {
+
+    @Id
+    @Column(name="id")
+    private String id;
+    @Column(name="descripcion")
+    private String descripcion;
+    @Column(name="pvp")
+    private Float pvp;
+    @Column(name="gastosEnvio")
+    private Float gastosEnvio;
+    @Column(name="preparacion")
+    private int preparacion;
+
+    public articulos(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.pvp = pvp;
+        this.gastosEnvio = gastosEnvio;
+        this.preparacion = preparacion;
+    }
+
+    public articulos() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Float getPvp() {
+        return pvp;
+    }
+
+    public void setPvp(Float pvp) {
+        this.pvp = pvp;
+    }
+
+    public Float getGastosEnvio() {
+        return gastosEnvio;
+    }
+
+    public void setGastosEnvio(Float gastosEnvio) {
+        this.gastosEnvio = gastosEnvio;
+    }
+
+    public int getPreparacion() {
+        return preparacion;
+    }
+
+    public void setPreparacion(int preparacion) {
+        this.preparacion = preparacion;
+    }
+
+    @Override
+    public String toString() {
+        return "articulo{" +
+                "id='" + id + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", pvp=" + pvp +
+                ", gastosEnvio=" + gastosEnvio +
+                ", preparacion=" + preparacion +
+                '}';
+    }
+}
+
