@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Articulos_ORM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes_ORM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Pedidos_ORM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/articulos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Articulos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/clientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/pedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Pedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/Articulos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/Pedidos.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
       <module name="Project4CodeBeers" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="codebeers.Hibernate.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

@@ -7,27 +7,27 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="pedidos")
-public class Pedidos {
+@Table(name="Pedidos_ORM")
+public class Pedidos_ORM {
 
     @Id
     @Column(name = "num")
     private int num;
 
     @Column(name = "cliente")
-    private Clientes cliente;
+    private Clientes_ORM cliente;
 
     @Column(name = "articulo")
-    private Articulos articulo;
+    private Articulos_ORM articulo;
     @Column(name = "cantidad")
     private int cantidad;
     @Column(name = "fechaHora")
     private LocalDateTime fechaHora;
 
-    public Pedidos() {
+    public Pedidos_ORM() {
     }
 
-    public Pedidos(int num, Clientes cliente, Articulos articulo, int cantidad, LocalDateTime fechaHora) {
+    public Pedidos_ORM(int num, Clientes_ORM cliente, Articulos_ORM articulo, int cantidad, LocalDateTime fechaHora) {
         this.num = num;
         this.cliente = cliente;
         this.articulo = articulo;
@@ -43,19 +43,19 @@ public class Pedidos {
         this.num = num;
     }
 
-    public Clientes getCliente() {
+    public Clientes_ORM getCliente() {
         return cliente;
     }
 
-    public void setCliente(Clientes cliente) {
+    public void setCliente(Clientes_ORM cliente) {
         this.cliente = cliente;
     }
 
-    public Articulos getArticulo() {
+    public Articulos_ORM getArticulo() {
         return articulo;
     }
 
-    public void setArticulo(Articulos articulo) {
+    public void setArticulo(Articulos_ORM articulo) {
         this.articulo = articulo;
     }
 
@@ -77,7 +77,7 @@ public class Pedidos {
 
     @Override
     public String toString() {
-        return "pedidos{" +
+        return "Pedidos_ORM{" +
                 "num=" + num +
                 ", cliente=" + cliente +
                 ", articulo=" + articulo +

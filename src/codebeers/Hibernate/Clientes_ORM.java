@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Clientes")
-public class Clientes {
+public class Clientes_ORM {
 
     @Id
     @Column(name="email")
@@ -25,10 +25,10 @@ public class Clientes {
     @Column(name="tipoCliente")
     public String tipoCliente;
 
-    public Clientes() {
+    public Clientes_ORM() {
     }
 
-    public Clientes(String email, String nombre, String domicilio, String nif, String tipoCliente) {
+    public Clientes_ORM(String email, String nombre, String domicilio, String nif, String tipoCliente) {
         this.email = email;
         this.nombre = nombre;
         this.domicilio = domicilio;

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Articulos")
-public class Articulos {
+public class Articulos_ORM {
 
     @Id
     @Column(name="id")
@@ -21,7 +21,7 @@ public class Articulos {
     @Column(name="preparacion")
     private int preparacion;
 
-    public Articulos(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
+    public Articulos_ORM(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
         this.id = id;
         this.descripcion = descripcion;
         this.pvp = pvp;
@@ -29,7 +29,7 @@ public class Articulos {
         this.preparacion = preparacion;
     }
 
-    public Articulos() {
+    public Articulos_ORM() {
     }
 
     public String getId() {
