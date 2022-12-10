@@ -1,16 +1,33 @@
 package codebeers.modelo;
 
-import java.util.LinkedHashMap;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Map;
 
-public class Articulo {
+
+@Entity
+@Table(name="articulo") // opcional
+public class Articulo implements Serializable {
+
+    // atributos
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
+    @Column
     private String descripcion;
+    @Column(nullable = false)
     private Float pvp;
+    @Column(nullable = false)
     private Float gastosEnvio;
+    @Column(nullable = false)
     private int preparacion;
 
-    public Articulo(){} //Inicializa todos los valores a NULL
+    // constructores
+
+    public Articulo(String id, String descripcion, float pvp, float gastosEnvio, int tiempoPreparacion) {
+    }
 
     public Articulo(String id, String descripcion, Float pvp, Float gastosEnvio, int preparacion) {
         this.id = id;
@@ -19,6 +36,9 @@ public class Articulo {
         this.gastosEnvio = gastosEnvio;
         this.preparacion = preparacion;
     }
+
+    // getter y settergigit statsu
+
 
     public String getId() {
         return id;
@@ -60,26 +80,22 @@ public class Articulo {
         this.preparacion = preparacion;
     }
 
+
+    // toString
+
+
     @Override
     public String toString() {
         return "Articulo{" +
-                "Codigo='" + id + '\'' +
-                ", Descripcion='" + descripcion + '\'' +
-                ", PVP='" + pvp + '\'' +
-                ", Gastos de Envio='" + gastosEnvio + '\'' +
-                ", Tiempo Preparacion='" + preparacion + '\'' + '}';
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", pvp=" + pvp +
+                ", gastosEnvio=" + gastosEnvio +
+                ", preparacion=" + preparacion +
+                '}';
     }
 
     public Map<String, String> getDatosArticulo() {
-
-        Map<String, String> datosArticulo = new LinkedHashMap<>();
-
-        datosArticulo.put("Id", getId());
-        datosArticulo.put("Descripcion", getDescripcion());
-        datosArticulo.put("PVP", Float.toString(getPvp()));
-        datosArticulo.put("Gastos de envío", Float.toString(getGastosEnvio()));
-        datosArticulo.put("Tiempo de preparación", Integer.toString(getPreparacion()));
-
-        return  datosArticulo;
+        return null;
     }
 }
