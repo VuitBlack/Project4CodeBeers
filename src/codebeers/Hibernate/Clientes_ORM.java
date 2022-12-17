@@ -1,5 +1,7 @@
 package codebeers.Hibernate;
 
+import codebeers.modelo.Cliente;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -34,6 +36,14 @@ public class Clientes_ORM {
         this.domicilio = domicilio;
         this.nif = nif;
         this.tipoCliente = tipoCliente;
+    }
+
+    public Clientes_ORM(Cliente cliente){
+        email = cliente.getEmail();
+        nombre = cliente.getNombre();
+        domicilio = cliente.getDomicilio();
+        nif = cliente.getNif();
+        tipoCliente = cliente.tipoCliente();
     }
 
     public String getEmail() {
