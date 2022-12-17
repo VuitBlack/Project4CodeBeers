@@ -43,12 +43,12 @@ public class Datos {
                     q = mySession.createQuery("from Clientes_ORM");
                 }
                 else {
-                    q = mySession.createQuery("from Clientes c where c.tipoCliente = ':0'");
-                    q.setParameter(0, filtro);
+                    q = mySession.createQuery("from Clientes_ORM c where c.tipoCliente = :type");
+                    q.setParameter("type", filtro);
                 }
                 List<Clientes_ORM> clientesORM = q.getResultList();
                 for (Clientes_ORM cliORM : clientesORM) {
-                    if (cliORM.getTipoCliente() == "Estándar")
+                    if (cliORM.getTipoCliente().equals("Estándar"))
                         clientes.add(new Estandar(cliORM.getNombre(), cliORM.getDomicilio(), cliORM.getNif(), cliORM.getEmail()));
                     else
                         clientes.add(new Premium(cliORM.getNombre(), cliORM.getDomicilio(), cliORM.getNif(), cliORM.getEmail()));
