@@ -20,12 +20,13 @@ public class GestionOS{
     }
 
     public void inicio() {
-
+/*
         try {
             loadSeeders();
         }catch(OnlineStoreException e){
             System.out.println(e.getError());
         }
+ */
 
         boolean salir = false;
         char opcion;
@@ -110,8 +111,8 @@ public class GestionOS{
                 String nif;
                 System.out.println("NIF del cliente: ");
                 nif = teclado.nextLine();
-                if(controlador.clienteExiste(nif))
-                    throw new ElementoYaExiste();
+//                if(controlador.clienteExiste(nif))
+//                    throw new ElementoYaExiste();
                 addCliente(nif);
                 break;
             case '2':

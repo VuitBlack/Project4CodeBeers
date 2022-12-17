@@ -15,7 +15,9 @@ import java.util.List;
 
 
 public class Datos {
-
+    public ListaClientes clientes;
+    public ListaArticulos articulos;
+    public ListaPedidos pedidos;
     public Datos() {
     }
 
@@ -38,7 +40,7 @@ public class Datos {
                 Query q;
                 mySession.beginTransaction();
                 if(filtro == ""){
-                    q = mySession.createQuery("from Clientes");
+                    q = mySession.createQuery("from Clientes_ORM");
                 }
                 else {
                     q = mySession.createQuery("from Clientes c where c.tipoCliente = ':0'");
@@ -71,8 +73,8 @@ public class Datos {
         try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Articulos_ORM.class).buildSessionFactory()) {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
-                Query q = mySession.createQuery("from Articulos");
-                List<Articulos_ORM> articulosORM = q.getResultList();
+//                Query q = mySession.createQuery("from Articulos");
+                List<Articulos_ORM> articulosORM = mySession.createQuery("from Articulos_ORM").getResultList();
                 for (Articulos_ORM articuloORM : articulosORM) {
                     Articulo articulo = new Articulo(
                             articuloORM.getId(),
