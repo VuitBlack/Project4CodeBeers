@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 @Entity
-@Table(name="articulo") // opcional
+@Table
 public class Articulo implements Serializable {
 
     // atributos

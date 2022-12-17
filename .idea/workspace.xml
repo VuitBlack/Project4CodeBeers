@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/test/ArticuloTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/dao/ArticuloDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/dao/ArticuloDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/codebeers/util/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project4CodeBeers.iml" afterDir="false" />
+    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Genero el package codebeers.Hibernate y las clases ORM: articulos, clientes, pedidos. &#10;Agrego las librerias necesarias:&#10; -javax_persistence_api.xml  ver2.2&#10; -hibernate_entitymanager.xml  ver5.6.14 Final&#10; -hibernate_orm_core.xml  ver6.1.5 Final">
+      <change beforePath="$PROJECT_DIR$/.idea/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test/ArticuloTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test/ArticuloTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/controlador/Controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/codebeers/modelo/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/modelo/Articulo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +50,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/home/Desktop/DAW/FP_058 Programación orientada a objetos con acceso a BBDD/Productos/Producto 4/Project4CodeBeers&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.16057692&quot;,
@@ -65,6 +58,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.ArticuloTest.createTablesTest">
     <configuration name="OnlineStore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="codebeers.vista.OnlineStore" />
@@ -106,6 +104,11 @@
       <updated>1669923811327</updated>
       <workItem from="1670681834409" duration="5450000" />
       <workItem from="1670695668748" duration="1074000" />
+      <workItem from="1670705721792" duration="3000" />
+      <workItem from="1670706963967" duration="56000" />
+      <workItem from="1670707036707" duration="82000" />
+      <workItem from="1670969612845" duration="682000" />
+      <workItem from="1671289059058" duration="815000" />
     </task>
     <servers />
   </component>

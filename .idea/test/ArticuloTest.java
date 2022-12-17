@@ -14,7 +14,6 @@ public class ArticuloTest {
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
 
         session.save(precisionBass);
