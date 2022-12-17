@@ -1,12 +1,17 @@
 package codebeers.modelo;
 
+import codebeers.Hibernate.Clientes_ORM;
 import codebeers.exceptions.ElementoNoExiste;
 import codebeers.exceptions.PedidoYaPreparado;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 
 
 public class Datos {
+
 
     private ListaClientes clientes;
     private ListaArticulos articulos;
@@ -21,7 +26,18 @@ public class Datos {
     public void addCliente(Cliente cliente) {
         clientes.add(cliente);
     }
+    public void addCliente_ORM(Cliente cliente) {
+        try (SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes_ORM.class).buildSessionFactory()) {
+            try (Session mySession = myFactory.openSession()) {
+                mySession.beginTransaction();           //Comenzamos la transacción para guardar el objeto Clientes en la BBDD
+                mySession.save(cliente);               //Guarda el objeto cliente en BBDD
+                mySession.getTransaction().commit();    //Mediante el Commit se graba en la base de datos
+                System.out.println("Registro insertado correcatamente");
+                mySession.close();                      //Se cierra la sesion para liberar memoria
+            }
+        }
 
+    }
     public ArrayList getClientes(String filtro) {
         return clientes.getClientes(filtro);
     }

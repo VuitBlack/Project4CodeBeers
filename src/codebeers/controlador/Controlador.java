@@ -1,5 +1,6 @@
 package codebeers.controlador;
 
+import codebeers.Hibernate.Clientes_ORM;
 import codebeers.modelo.*;
 import codebeers.exceptions.*;
 import java.time.LocalDateTime;
@@ -31,6 +32,7 @@ public class Controlador {
                 throw new OpcionNoValida();
         }
         datos.addCliente(cliente);
+        datos.addCliente_ORM(cliente);
     }
 
     public ArrayList getClientes(String filtro) {

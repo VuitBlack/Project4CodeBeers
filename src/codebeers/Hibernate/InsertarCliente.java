@@ -14,10 +14,10 @@ public class InsertarCliente {
 
         try{
             //Creo un Cliente ORM
-            Clientes_ORM cliente1 = new Clientes_ORM("pajaroloco@email.com","Woody","Pino de la esquina","8888P","Premium");
+            Clientes_ORM cliente1 = new Clientes_ORM("LOCO@email.com","LOCO","Pino de la esquina","8888P","Premium");
             mySession.beginTransaction();           //Comenzamos la transacción para guardar el objeto Clientes en la BBDD
-            mySession.save(cliente1);               //Guarda el objeto cliente en BBDD
-//            mySession.update(cliente1);             //Actualiza el objeto cliente en la BBDD
+//            mySession.save(cliente1);               //Guarda el objeto cliente en BBDD
+            mySession.update(cliente1);             //Actualiza el objeto cliente en la BBDD
 //            mySession.delete(cliente1);             //Borra el objeto cliente en la BBDD
             mySession.getTransaction().commit();    //Mediante el Commit se graba en la base de datos
             System.out.println("Registro insertado correcatamente");
