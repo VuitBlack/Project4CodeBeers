@@ -221,7 +221,28 @@ public class Datos {
     }
 
     public void deletePedido(int num) throws ElementoNoExiste, PedidoYaPreparado {
-        pedidos.deletePedido(num);
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .addAnnotatedClass(Articulos_ORM.class)
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                pedidos = getPedidos("", false);
+                for(Pedido pedido : pedidos) {
+                    if (num == pedido.getNum()) {
+                        System.out.println("Eureka!");
+                        Pedidos_ORM pedidoORM = new Pedidos_ORM();
+                        pedidoORM.setNum(num);
+                        mySession.beginTransaction();
+                        mySession.delete(pedidoORM);
+                        mySession.getTransaction().commit();
+                    }
+                }
+            }
+        }
     }
 
     public Cliente getClienteByNif(String nif) throws ElementoNoExiste {
