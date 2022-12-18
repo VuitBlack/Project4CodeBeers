@@ -53,7 +53,7 @@ public class Datos {
             try (Session mySession = myFactory.openSession()) {
                 Query q;
                 mySession.beginTransaction();
-                if(filtro == ""){
+                if(filtro.equals("")){
                     q = mySession.createQuery("from Clientes_ORM");
                 }
                 else {
@@ -133,7 +133,7 @@ public class Datos {
     }
 
     public void addPedido(Pedido pedido) {
-        try(SessionFactory myFactory = new Configuration()
+        try (SessionFactory myFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Pedidos_ORM.class)
                 .addAnnotatedClass(Articulos_ORM.class)
@@ -142,12 +142,15 @@ public class Datos {
         ) {
             try (Session mySession = myFactory.openSession()) {
                 Pedidos_ORM pedidoORM = new Pedidos_ORM(
-                    
+                        pedido.getNum(),
+                        new Clientes_ORM(pedido.getCliente()),
+                        new Articulos_ORM(pedido.getArticulo()),
+                        pedido.getCantidad(),
+                        pedido.getFechaHora()
                 );
                 mySession.beginTransaction();
                 mySession.save(pedidoORM);
                 mySession.getTransaction().commit();
-
             }
         }
     }
@@ -166,7 +169,7 @@ public class Datos {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
                 Query q;
-                if (filtro == "") {
+                if (filtro.equals("")) {
                     q = mySession.createQuery("from Pedidos_ORM");
                 } else {
                     q = mySession.createQuery("from Pedidos_ORM p where p.tipoCliente = :type");
@@ -218,7 +221,28 @@ public class Datos {
     }
 
     public void deletePedido(int num) throws ElementoNoExiste, PedidoYaPreparado {
-        pedidos.deletePedido(num);
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .addAnnotatedClass(Articulos_ORM.class)
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                pedidos = getPedidos("", false);
+                for(Pedido pedido : pedidos) {
+                    if (num == pedido.getNum()) {
+                        System.out.println("Eureka!");
+                        Pedidos_ORM pedidoORM = new Pedidos_ORM();
+                        pedidoORM.setNum(num);
+                        mySession.beginTransaction();
+                        mySession.delete(pedidoORM);
+                        mySession.getTransaction().commit();
+                    }
+                }
+            }
+        }
     }
 
     public Cliente getClienteByNif(String nif) throws ElementoNoExiste {
