@@ -1,5 +1,7 @@
 package codebeers.Hibernate;
 
+import codebeers.modelo.Pedido;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,15 +26,26 @@ public class Pedidos_ORM {
     @Column(name = "fechaHora")
     private LocalDateTime fechaHora;
 
-    public Pedidos_ORM() {
-    }
-
-    public Pedidos_ORM(int num, Clientes_ORM cliente, Articulos_ORM articulo, int cantidad, LocalDateTime fechaHora) {
+    public Pedidos_ORM(
+            int num,
+            Clientes_ORM cliente,
+            Articulos_ORM articulo,
+            int cantidad,
+            LocalDateTime fechaHora
+    ) {
         this.num = num;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;
         this.fechaHora = fechaHora;
+    }
+
+    public Pedidos_ORM(Pedido pedido) {
+        this.num = pedido.getNum();
+        this.cliente = new Clientes_ORM(pedido.getCliente());
+        this.articulo = new Articulos_ORM(pedido.getArticulo());
+        this.cantidad = pedido.getCantidad();
+        this.fechaHora = pedido.getFechaHora();
     }
 
     public int getNum() {

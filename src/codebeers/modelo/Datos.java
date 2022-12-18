@@ -91,9 +91,19 @@ public class Datos {
     }
 
     public void addPedido(Pedido pedido) {
-        try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pedidos_ORM.class).buildSessionFactory()) {
+        try (SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
-                Pedidos_ORM pedidoORM = new Pedidos_ORM(pedido.getNum(), new Clientes_ORM(pedido.getCliente()), new Articulos_ORM(pedido.getArticulo()), pedido.getCantidad(), pedido.getFechaHora());
+                Pedidos_ORM pedidoORM = new Pedidos_ORM(
+                        pedido.getNum(),
+                        new Clientes_ORM(pedido.getCliente()),
+                        new Articulos_ORM(pedido.getArticulo()),
+                        pedido.getCantidad(),
+                        pedido.getFechaHora()
+                );
                 mySession.beginTransaction();
                 mySession.save(pedidoORM);
                 mySession.getTransaction().commit();
