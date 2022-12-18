@@ -97,13 +97,14 @@ public class Datos {
                 .buildSessionFactory()
         ) {
             try (Session mySession = myFactory.openSession()) {
-                Pedidos_ORM pedidoORM = new Pedidos_ORM(
-                        pedido.getNum(),
-                        new Clientes_ORM(pedido.getCliente()),
-                        new Articulos_ORM(pedido.getArticulo()),
-                        pedido.getCantidad(),
-                        pedido.getFechaHora()
-                );
+                // Pedidos_ORM pedidoORM = new Pedidos_ORM(
+                //         pedido.getNum(),
+                //         new Clientes_ORM(pedido.getCliente()),
+                //         new Articulos_ORM(pedido.getArticulo()),
+                //         pedido.getCantidad(),
+                //         pedido.getFechaHora()
+                // );
+                Pedidos_ORM pedidoORM = new Pedidos_ORM(pedido);
                 mySession.beginTransaction();
                 mySession.save(pedidoORM);
                 mySession.getTransaction().commit();
