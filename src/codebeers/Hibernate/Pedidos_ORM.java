@@ -2,25 +2,27 @@ package codebeers.Hibernate;
 
 import codebeers.modelo.Pedido;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="Pedidos_ORM")
+@Table(name="Pedidos")
 public class Pedidos_ORM {
 
     @Id
     @Column(name = "num")
     private int num;
 
+    //@OneToOne(mappedBy = "email")
     @Column(name = "cliente")
     private Clientes_ORM cliente;
 
-    @Column(name = "articulo")
+    //@OneToOne(mappedBy = "id")
+    //@Column(name = "articulo")
+    //@JoinColumn(name = "articulo")
+    @ManyToOne()
     private Articulos_ORM articulo;
+
     @Column(name = "cantidad")
     private int cantidad;
     @Column(name = "fechaHora")
