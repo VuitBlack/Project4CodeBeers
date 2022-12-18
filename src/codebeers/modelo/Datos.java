@@ -133,18 +133,23 @@ public class Datos {
     }
 
     public void addPedido(Pedido pedido) {
-        // try(SessionFactory myFactory = new Configuration()
-        //         .configure("hibernate.cfg.xml")
-        //         .addAnnotatedClass(Pedidos_ORM.class)
-        //         .addAnnotatedClass(Articulos_ORM.class)
-        //         .addAnnotatedClass(Clientes_ORM.class)
-        //         .buildSessionFactory()
-        // ) {
-        //     try (Session mySession = myFactory.openSession()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .addAnnotatedClass(Articulos_ORM.class)
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Pedidos_ORM pedidoORM = new Pedidos_ORM(
+                    
+                );
+                mySession.beginTransaction();
+                mySession.save(pedidoORM);
+                mySession.getTransaction().commit();
 
-
-        //     }
-        // }
+            }
+        }
     }
 
     public ArrayList<Pedido> getPedidos(String filtro, boolean enviado) {

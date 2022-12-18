@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class Pedidos_ORM {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num")
     private int num;
 
@@ -30,13 +31,11 @@ public class Pedidos_ORM {
     public Pedidos_ORM() { }
 
     public Pedidos_ORM(
-            int num,
             Clientes_ORM cliente,
             Articulos_ORM articulo,
             int cantidad,
             LocalDateTime fechaHora
     ) {
-        this.num = num;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;

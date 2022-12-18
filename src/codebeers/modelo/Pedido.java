@@ -16,13 +16,9 @@ public class Pedido {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public Pedido(){
-        nextNum++;
-        this.num = nextNum;
-    } //Inicializa los demás valores a NULL
+    } //Inicializa los valores a NULL
 
     public Pedido(Cliente cliente, Articulo articulo, int cantidad, LocalDateTime fechaHora) {
-        nextNum++;
-        this.num = nextNum;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;

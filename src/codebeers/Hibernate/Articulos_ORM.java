@@ -11,7 +11,6 @@ import java.util.List;
 public class Articulos_ORM {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private String id;
     @Column(name="descripcion")
