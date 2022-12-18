@@ -2,15 +2,13 @@ package codebeers.Hibernate;
 
 import codebeers.modelo.Cliente;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Clientes")
 public class Clientes_ORM {
-    public Cliente cliente;
+
     @Id
     @Column(name="email")
     public String email;
@@ -27,8 +25,7 @@ public class Clientes_ORM {
     @Column(name="tipoCliente")
     public String tipoCliente;
 
-    public Clientes_ORM(){}
-    public Clientes_ORM(Cliente cliente) {
+    public Clientes_ORM() {
     }
 
     public Clientes_ORM(String email, String nombre, String domicilio, String nif, String tipoCliente) {
@@ -37,6 +34,14 @@ public class Clientes_ORM {
         this.domicilio = domicilio;
         this.nif = nif;
         this.tipoCliente = tipoCliente;
+    }
+
+    public Clientes_ORM(Cliente cliente){
+        email = cliente.getEmail();
+        nombre = cliente.getNombre();
+        domicilio = cliente.getDomicilio();
+        nif = cliente.getNif();
+        tipoCliente = cliente.tipoCliente();
     }
 
     public String getEmail() {

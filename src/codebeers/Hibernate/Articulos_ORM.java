@@ -1,9 +1,10 @@
 package codebeers.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import codebeers.modelo.Articulo;
+import codebeers.modelo.Pedido;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Articulos")
@@ -27,6 +28,14 @@ public class Articulos_ORM {
         this.pvp = pvp;
         this.gastosEnvio = gastosEnvio;
         this.preparacion = preparacion;
+    }
+
+    public Articulos_ORM(Articulo articulo){
+        id = articulo.getId();
+        descripcion = articulo.getDescripcion();
+        pvp = articulo.getPvp();
+        gastosEnvio = articulo.getGastosEnvio();
+        preparacion = articulo.getPreparacion();
     }
 
     public Articulos_ORM() {

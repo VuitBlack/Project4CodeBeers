@@ -1,60 +1,220 @@
 package codebeers.modelo;
 
+import codebeers.Hibernate.Articulos_ORM;
 import codebeers.Hibernate.Clientes_ORM;
+import codebeers.Hibernate.Pedidos_ORM;
 import codebeers.exceptions.ElementoNoExiste;
 import codebeers.exceptions.PedidoYaPreparado;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Datos {
-
-
-    private ListaClientes clientes;
-    private ListaArticulos articulos;
-    private ListaPedidos pedidos;
-
+    public ListaClientes clientes;
+    public ListaArticulos articulos;
+    public ListaPedidos pedidos;
     public Datos() {
-        this.clientes = new ListaClientes();
-        this.articulos = new ListaArticulos();
-        this.pedidos = new ListaPedidos();
     }
 
     public void addCliente(Cliente cliente) {
-        clientes.add(cliente);
-    }
-    public void addCliente_ORM(Cliente cliente) {
-        try (SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes_ORM.class).buildSessionFactory()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
+                Clientes_ORM clienteORM = new Clientes_ORM(
+                        cliente.getEmail(),
+                        cliente.getNombre(),
+                        cliente.getDomicilio(),
+                        cliente.getNif(),
+                        cliente.tipoCliente()
+                );
                 mySession.beginTransaction();           //Comenzamos la transacción para guardar el objeto Clientes en la BBDD
-                mySession.save(cliente);               //Guarda el objeto cliente en BBDD
-                mySession.getTransaction().commit();    //Mediante el Commit se graba en la base de datos
-                System.out.println("Registro insertado correcatamente");
-                mySession.close();                      //Se cierra la sesion para liberar memoria
+                mySession.save(clienteORM);
+                mySession.getTransaction().commit();
             }
         }
-
     }
+
     public ArrayList getClientes(String filtro) {
-        return clientes.getClientes(filtro);
+        ArrayList<Cliente> clientes = new ArrayList<>();
+
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Query q;
+                mySession.beginTransaction();
+                if(filtro == ""){
+                    q = mySession.createQuery("from Clientes_ORM");
+                }
+                else {
+                    q = mySession.createQuery("from Clientes_ORM c where c.tipoCliente = :type");
+                    q.setParameter("type", filtro);
+                }
+                List<Clientes_ORM> clientesORM = q.getResultList();
+                for (Clientes_ORM cliORM : clientesORM) {
+                    if (cliORM.getTipoCliente().equals("Estándar"))
+                        clientes.add(
+                                new Estandar(
+                                        cliORM.getNombre(),
+                                        cliORM.getDomicilio(),
+                                        cliORM.getNif(),
+                                        cliORM.getEmail()
+                                )
+                        );
+                    else
+                        clientes.add(
+                                new Premium(
+                                    cliORM.getNombre(),
+                                    cliORM.getDomicilio(),
+                                    cliORM.getNif(),
+                                    cliORM.getEmail()
+                                )
+                        );
+                }
+            }
+        }
+        return clientes;
     }
 
     public void addArticulo(Articulo articulo){
-        articulos.add(articulo);
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Articulos_ORM articuloORM = new Articulos_ORM(
+                        articulo.getId(),
+                        articulo.getDescripcion(),
+                        articulo.getPvp(),
+                        articulo.getGastosEnvio(),
+                        articulo.getPreparacion()
+                );
+                mySession.beginTransaction();
+                mySession.save(articuloORM);
+                mySession.getTransaction().commit();
+            }
+        }
     }
     public ArrayList getArticulos() {
-        return articulos.getArrayList();
+        ArrayList<Articulo> articulos = new ArrayList<>();
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                mySession.beginTransaction();
+//                Query q = mySession.createQuery("from Articulos");
+                List<Articulos_ORM> articulosORM = mySession.createQuery("from Articulos_ORM").getResultList();
+                for (Articulos_ORM articuloORM : articulosORM) {
+                    Articulo articulo = new Articulo(
+                            articuloORM.getId(),
+                            articuloORM.getDescripcion(),
+                            articuloORM.getPvp(),
+                            articuloORM.getGastosEnvio(),
+                            articuloORM.getPreparacion()
+                    );
+                    articulos.add(articulo);
+                }
+            }
+        }
+        return articulos;
     }
 
     public void addPedido(Pedido pedido) {
-        pedidos.add(pedido);
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .addAnnotatedClass(Articulos_ORM.class)
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Pedidos_ORM pedidoORM = new Pedidos_ORM(
+                    
+                );
+                mySession.beginTransaction();
+                mySession.save(pedidoORM);
+                mySession.getTransaction().commit();
+
+            }
+        }
     }
 
-    public ArrayList getPedidos(String filtro, boolean enviado) {
-        return pedidos.getPedidos(filtro, enviado);
+    public ArrayList<Pedido> getPedidos(String filtro, boolean enviado) {
+
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+
+        try (SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pedidos_ORM.class)
+                .addAnnotatedClass(Articulos_ORM.class)
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                mySession.beginTransaction();
+                Query q;
+                if (filtro == "") {
+                    q = mySession.createQuery("from Pedidos_ORM");
+                } else {
+                    q = mySession.createQuery("from Pedidos_ORM p where p.tipoCliente = :type");
+                    q.setParameter("type", filtro);
+                }
+                List<Pedidos_ORM> pedidosORM = q.getResultList();
+                for (Pedidos_ORM pedidoORM : pedidosORM) {
+                    Clientes_ORM cliORM = pedidoORM.getCliente();
+                    Cliente cliente;
+                    if (cliORM.getTipoCliente().equals("Premium")) {
+                        cliente = new Premium(
+                                cliORM.getEmail(),
+                                cliORM.getNombre(),
+                                cliORM.getDomicilio(),
+                                cliORM.getNif()
+                        );
+                    } else {
+                        cliente = new Estandar(
+                                cliORM.getEmail(),
+                                cliORM.getNombre(),
+                                cliORM.getDomicilio(),
+                                cliORM.getNif()
+                        );
+                    }
+
+                    Articulos_ORM artiORM = pedidoORM.getArticulo();
+                    Articulo articulo = new Articulo(
+                            artiORM.getId(),
+                            artiORM.getDescripcion(),
+                            artiORM.getPvp(),
+                            artiORM.getGastosEnvio(),
+                            artiORM.getPreparacion()
+                    );
+
+                    Pedido pedido = new Pedido(
+                            pedidoORM.getNum(),
+                            cliente,
+                            articulo,
+                            pedidoORM.getCantidad(),
+                            pedidoORM.getFechaHora()
+                    );
+                    if (pedido.pedidoEnviado() == enviado) {
+                        pedidos.add(pedido);
+                    }
+                }
+            }
+        }
+        return pedidos;
     }
 
     public void deletePedido(int num) throws ElementoNoExiste, PedidoYaPreparado {
@@ -62,18 +222,87 @@ public class Datos {
     }
 
     public Cliente getClienteByNif(String nif) throws ElementoNoExiste {
-        return clientes.getClienteByNif(nif);
+
+        Cliente cliente = null;
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                mySession.beginTransaction();
+                Query q = mySession.createQuery("from Clientes_ORM c where c.nif = :nif");
+                q.setParameter("nif", nif);
+                Clientes_ORM clienteORM = (Clientes_ORM) q.getSingleResult();
+                if (clienteORM.getTipoCliente().equals("Estándar"))
+                    cliente = new Estandar(
+                            clienteORM.getNombre(),
+                            clienteORM.getDomicilio(),
+                            clienteORM.getNif(),
+                            clienteORM.getEmail()
+                    );
+                else
+                    cliente = new Premium(
+                            clienteORM.getNombre(),
+                            clienteORM.getDomicilio(),
+                            clienteORM.getNif(),
+                            clienteORM.getEmail()
+                    );
+            }
+        }
+        return cliente;
     }
     public Articulo getArticuloById(String id) throws ElementoNoExiste {
-        return articulos.getArticuloById(id);
+        Articulo articulo = null;
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                mySession.beginTransaction();
+                Query q = mySession.createQuery("from Articulos_ORM a where a.id = :id");
+                q.setParameter("id", id);
+                Articulos_ORM articuloORM = (Articulos_ORM) q.getSingleResult();
+                articulo = new Articulo(
+                        articuloORM.getId(),
+                        articuloORM.getDescripcion(),
+                        articuloORM.getPvp(),
+                        articuloORM.getGastosEnvio(),
+                        articuloORM.getPreparacion()
+                );
+            }
+        }
+        return articulo;
     }
 
     public boolean compruebaExistenciaCliente(String nif) {
-        return clientes.compruebaExistencia(nif);
+        try (SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Query query = mySession.createQuery("select 1 from Clientes_ORM c where c.nif = :nif");
+                query.setParameter("nif", nif);
+                return (query.uniqueResult() != null);
+            }
+        }
     }
 
     public boolean compruebaExistenciaArticulo(String id) {
-        return articulos.compruebaExistencia(id);
+
+        try (SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
+            try (Session mySession = myFactory.openSession()) {
+                Query query = mySession.createQuery("select 1 from Articulos_ORM a where a.id = :id");
+                query.setParameter("id", id);
+                return (query.uniqueResult() != null);
+            }
+        }
     }
 
     public boolean compruebaExistenciaPedido(int num) {

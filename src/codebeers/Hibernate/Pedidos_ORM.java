@@ -1,38 +1,53 @@
 package codebeers.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import codebeers.modelo.Pedido;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="Pedidos_ORM")
+@Table(name="Pedidos")
 public class Pedidos_ORM {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num")
     private int num;
 
-    @Column(name = "cliente")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente")
     private Clientes_ORM cliente;
 
-    @Column(name = "articulo")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "articulo")
     private Articulos_ORM articulo;
+
     @Column(name = "cantidad")
     private int cantidad;
+
     @Column(name = "fechaHora")
     private LocalDateTime fechaHora;
 
-    public Pedidos_ORM() {
-    }
+    public Pedidos_ORM() { }
 
-    public Pedidos_ORM(int num, Clientes_ORM cliente, Articulos_ORM articulo, int cantidad, LocalDateTime fechaHora) {
-        this.num = num;
+    public Pedidos_ORM(
+            Clientes_ORM cliente,
+            Articulos_ORM articulo,
+            int cantidad,
+            LocalDateTime fechaHora
+    ) {
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;
         this.fechaHora = fechaHora;
+    }
+
+    public Pedidos_ORM(Pedido pedido) {
+        this.num = pedido.getNum();
+        this.cliente = new Clientes_ORM(pedido.getCliente());
+        this.articulo = new Articulos_ORM(pedido.getArticulo());
+        this.cantidad = pedido.getCantidad();
+        this.fechaHora = pedido.getFechaHora();
     }
 
     public int getNum() {

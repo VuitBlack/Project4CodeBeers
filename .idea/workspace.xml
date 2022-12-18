@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Cambio el nombre a las clases ORM: Articulos_ORM, Clientes_ORM, Pedidos_ORM. &#10;Creo mySession.save, mySession.update y mySession.delete para Clientes_ORM.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes_ORM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/Clientes_ORM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/Hibernate/InsertarCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/controlador/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codebeers/modelo/Datos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/modelo/Datos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterDir="false" />
-    </list>
+    <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Cambio el nombre a las clases ORM: Articulos_ORM, Clientes_ORM, Pedidos_ORM. &#10;Creo mySession.save, mySession.update y mySession.delete para Clientes_ORM." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ricardo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +52,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xavimat/Dropbox/FP-UOC/FP.058 POO Java BBDD/Project4CodeBeers&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.22077923&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.29209185&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
@@ -96,6 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OnlineStore" />
+        <item itemvalue="Application.InsertarCliente" />
         <item itemvalue="Application.OnlineStore" />
         <item itemvalue="Application.InsertarCliente" />
       </list>
