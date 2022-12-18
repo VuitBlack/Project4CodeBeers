@@ -22,9 +22,19 @@ public class Datos {
     }
 
     public void addCliente(Cliente cliente) {
-        try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes_ORM.class).buildSessionFactory()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
-                Clientes_ORM clienteORM = new Clientes_ORM(cliente.getEmail(), cliente.getNombre(), cliente.getDomicilio(), cliente.getNif(), cliente.tipoCliente());
+                Clientes_ORM clienteORM = new Clientes_ORM(
+                        cliente.getEmail(),
+                        cliente.getNombre(),
+                        cliente.getDomicilio(),
+                        cliente.getNif(),
+                        cliente.tipoCliente()
+                );
                 mySession.beginTransaction();           //Comenzamos la transacción para guardar el objeto Clientes en la BBDD
                 mySession.save(clienteORM);
                 mySession.getTransaction().commit();
@@ -35,7 +45,11 @@ public class Datos {
     public ArrayList getClientes(String filtro) {
         ArrayList<Cliente> clientes = new ArrayList<>();
 
-        try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes_ORM.class).buildSessionFactory()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Clientes_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
                 Query q;
                 mySession.beginTransaction();
@@ -49,9 +63,23 @@ public class Datos {
                 List<Clientes_ORM> clientesORM = q.getResultList();
                 for (Clientes_ORM cliORM : clientesORM) {
                     if (cliORM.getTipoCliente().equals("Estándar"))
-                        clientes.add(new Estandar(cliORM.getNombre(), cliORM.getDomicilio(), cliORM.getNif(), cliORM.getEmail()));
+                        clientes.add(
+                                new Estandar(
+                                        cliORM.getNombre(),
+                                        cliORM.getDomicilio(),
+                                        cliORM.getNif(),
+                                        cliORM.getEmail()
+                                )
+                        );
                     else
-                        clientes.add(new Premium(cliORM.getNombre(), cliORM.getDomicilio(), cliORM.getNif(), cliORM.getEmail()));
+                        clientes.add(
+                                new Premium(
+                                    cliORM.getNombre(),
+                                    cliORM.getDomicilio(),
+                                    cliORM.getNif(),
+                                    cliORM.getEmail()
+                                )
+                        );
                 }
             }
         }
@@ -59,9 +87,19 @@ public class Datos {
     }
 
     public void addArticulo(Articulo articulo){
-        try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Articulos_ORM.class).buildSessionFactory()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
-                Articulos_ORM articuloORM = new Articulos_ORM(articulo.getId(), articulo.getDescripcion(), articulo.getPvp(), articulo.getGastosEnvio(), articulo.getPreparacion());
+                Articulos_ORM articuloORM = new Articulos_ORM(
+                        articulo.getId(),
+                        articulo.getDescripcion(),
+                        articulo.getPvp(),
+                        articulo.getGastosEnvio(),
+                        articulo.getPreparacion()
+                );
                 mySession.beginTransaction();
                 mySession.save(articuloORM);
                 mySession.getTransaction().commit();
@@ -70,7 +108,11 @@ public class Datos {
     }
     public ArrayList getArticulos() {
         ArrayList<Articulo> articulos = new ArrayList<>();
-        try(SessionFactory myFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Articulos_ORM.class).buildSessionFactory()) {
+        try(SessionFactory myFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Articulos_ORM.class)
+                .buildSessionFactory()
+        ) {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
 //                Query q = mySession.createQuery("from Articulos");
@@ -97,13 +139,6 @@ public class Datos {
                 .buildSessionFactory()
         ) {
             try (Session mySession = myFactory.openSession()) {
-                // Pedidos_ORM pedidoORM = new Pedidos_ORM(
-                //         pedido.getNum(),
-                //         new Clientes_ORM(pedido.getCliente()),
-                //         new Articulos_ORM(pedido.getArticulo()),
-                //         pedido.getCantidad(),
-                //         pedido.getFechaHora()
-                // );
                 Pedidos_ORM pedidoORM = new Pedidos_ORM(pedido);
                 mySession.beginTransaction();
                 mySession.save(pedidoORM);
