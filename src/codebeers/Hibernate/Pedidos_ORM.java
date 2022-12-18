@@ -13,14 +13,12 @@ public class Pedidos_ORM {
     @Column(name = "num")
     private int num;
 
-    //@OneToOne(mappedBy = "email")
-    @Column(name = "cliente")
+    @ManyToOne()
+    @JoinColumn(name = "cliente")
     private Clientes_ORM cliente;
 
-    //@OneToOne(mappedBy = "id")
-    //@Column(name = "articulo")
-    //@JoinColumn(name = "articulo")
     @ManyToOne()
+    @JoinColumn(name = "articulo")
     private Articulos_ORM articulo;
 
     @Column(name = "cantidad")
