@@ -13,18 +13,21 @@ public class Pedidos_ORM {
     @Column(name = "num")
     private int num;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente")
     private Clientes_ORM cliente;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "articulo")
     private Articulos_ORM articulo;
 
     @Column(name = "cantidad")
     private int cantidad;
+
     @Column(name = "fechaHora")
     private LocalDateTime fechaHora;
+
+    public Pedidos_ORM() { }
 
     public Pedidos_ORM(
             int num,

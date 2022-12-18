@@ -1,17 +1,17 @@
 package codebeers.Hibernate;
 
 import codebeers.modelo.Articulo;
+import codebeers.modelo.Pedido;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Articulos")
 public class Articulos_ORM {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private String id;
     @Column(name="descripcion")
