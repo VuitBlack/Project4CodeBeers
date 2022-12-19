@@ -32,7 +32,6 @@ public class Controlador {
                 throw new OpcionNoValida();
         }
         datos.addCliente(cliente);
-        datos.addCliente_ORM(cliente);
     }
 
     public ArrayList getClientes(String filtro) {
