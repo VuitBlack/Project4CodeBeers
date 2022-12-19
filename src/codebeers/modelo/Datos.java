@@ -229,7 +229,6 @@ public class Datos {
                 pedidos = getPedidos("", false);
                 for(Pedido pedido : pedidos) {
                     if (num == pedido.getNum()) {
-                        System.out.println("Eureka!");
                         Pedidos_ORM pedidoORM = new Pedidos_ORM();
                         pedidoORM.setNum(num);
                         mySession.beginTransaction();
