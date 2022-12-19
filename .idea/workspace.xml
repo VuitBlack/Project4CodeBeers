@@ -7,6 +7,7 @@
     <list default="true" id="78f5fdd3-dadc-47fc-88a9-c0271b92b873" name="Changes" comment="Cambio el nombre a las clases ORM: Articulos_ORM, Clientes_ORM, Pedidos_ORM. &#10;Creo mySession.save, mySession.update y mySession.delete para Clientes_ORM.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/codebeers/modelo/Datos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codebeers/modelo/Datos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -172,8 +172,8 @@ public class Datos {
                 if (filtro.equals("")) {
                     q = mySession.createQuery("from Pedidos_ORM");
                 } else {
-                    q = mySession.createQuery("from Pedidos_ORM p where p.tipoCliente = :type");
-                    q.setParameter("type", filtro);
+                    q = mySession.createQuery("from Pedidos_ORM p where p.cliente = :mail");
+                    q.setParameter("mail", filtro);
                 }
                 List<Pedidos_ORM> pedidosORM = q.getResultList();
                 for (Pedidos_ORM pedidoORM : pedidosORM) {
@@ -181,17 +181,17 @@ public class Datos {
                     Cliente cliente;
                     if (cliORM.getTipoCliente().equals("Premium")) {
                         cliente = new Premium(
-                                cliORM.getEmail(),
                                 cliORM.getNombre(),
                                 cliORM.getDomicilio(),
-                                cliORM.getNif()
+                                cliORM.getNif(),
+                                cliORM.getEmail()
                         );
                     } else {
                         cliente = new Estandar(
-                                cliORM.getEmail(),
                                 cliORM.getNombre(),
                                 cliORM.getDomicilio(),
-                                cliORM.getNif()
+                                cliORM.getNif(),
+                                cliORM.getEmail()
                         );
                     }
 
