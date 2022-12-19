@@ -168,50 +168,47 @@ public class Datos {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
                 Query q;
-                if (filtro.equals("")) {
-                    q = mySession.createQuery("from Pedidos_ORM");
-                } else {
-                    q = mySession.createQuery("from Pedidos_ORM p where p.tipoCliente = :type");
-                    q.setParameter("type", filtro);
-                }
+                q = mySession.createQuery("from Pedidos_ORM");
                 List<Pedidos_ORM> pedidosORM = q.getResultList();
                 for (Pedidos_ORM pedidoORM : pedidosORM) {
                     Clientes_ORM cliORM = pedidoORM.getCliente();
                     Cliente cliente;
-                    if (cliORM.getTipoCliente().equals("Premium")) {
-                        cliente = new Premium(
-                                cliORM.getEmail(),
-                                cliORM.getNombre(),
-                                cliORM.getDomicilio(),
-                                cliORM.getNif()
-                        );
-                    } else {
-                        cliente = new Estandar(
-                                cliORM.getEmail(),
-                                cliORM.getNombre(),
-                                cliORM.getDomicilio(),
-                                cliORM.getNif()
-                        );
-                    }
+                    if(filtro.equals("") || filtro.equals(cliORM.getNif())) {
+                        if (cliORM.getTipoCliente().equals("Premium")) {
+                            cliente = new Premium(
+                                    cliORM.getNombre(),
+                                    cliORM.getDomicilio(),
+                                    cliORM.getNif(),
+                                    cliORM.getEmail()
+                            );
+                        } else {
+                            cliente = new Estandar(
+                                    cliORM.getNombre(),
+                                    cliORM.getDomicilio(),
+                                    cliORM.getNif(),
+                                    cliORM.getEmail()
+                            );
+                        }
 
-                    Articulos_ORM artiORM = pedidoORM.getArticulo();
-                    Articulo articulo = new Articulo(
-                            artiORM.getId(),
-                            artiORM.getDescripcion(),
-                            artiORM.getPvp(),
-                            artiORM.getGastosEnvio(),
-                            artiORM.getPreparacion()
-                    );
+                        Articulos_ORM artiORM = pedidoORM.getArticulo();
+                        Articulo articulo = new Articulo(
+                                artiORM.getId(),
+                                artiORM.getDescripcion(),
+                                artiORM.getPvp(),
+                                artiORM.getGastosEnvio(),
+                                artiORM.getPreparacion()
+                        );
 
-                    Pedido pedido = new Pedido(
-                            pedidoORM.getNum(),
-                            cliente,
-                            articulo,
-                            pedidoORM.getCantidad(),
-                            pedidoORM.getFechaHora()
-                    );
-                    if (pedido.pedidoEnviado() == enviado) {
-                        pedidos.add(pedido);
+                        Pedido pedido = new Pedido(
+                                pedidoORM.getNum(),
+                                cliente,
+                                articulo,
+                                pedidoORM.getCantidad(),
+                                pedidoORM.getFechaHora()
+                        );
+                        if (pedido.pedidoEnviado() == enviado) {
+                            pedidos.add(pedido);
+                        }
                     }
                 }
             }
