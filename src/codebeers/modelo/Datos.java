@@ -114,7 +114,6 @@ public class Datos {
         ) {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
-//                Query q = mySession.createQuery("from Articulos");
                 List<Articulos_ORM> articulosORM = mySession.createQuery("from Articulos_ORM").getResultList();
                 for (Articulos_ORM articuloORM : articulosORM) {
                     Articulo articulo = new Articulo(
@@ -167,9 +166,7 @@ public class Datos {
         ) {
             try (Session mySession = myFactory.openSession()) {
                 mySession.beginTransaction();
-                Query q;
-                q = mySession.createQuery("from Pedidos_ORM");
-                List<Pedidos_ORM> pedidosORM = q.getResultList();
+                List<Pedidos_ORM> pedidosORM = mySession.createQuery("from Pedidos_ORM").getResultList();
                 for (Pedidos_ORM pedidoORM : pedidosORM) {
                     Clientes_ORM cliORM = pedidoORM.getCliente();
                     Cliente cliente;
