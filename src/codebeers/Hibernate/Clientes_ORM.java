@@ -1,10 +1,7 @@
 package codebeers.Hibernate;
 
 import codebeers.modelo.Cliente;
-
 import javax.persistence.*;
-import java.util.List;
-
 @Entity
 @Table(name="Clientes")
 public class Clientes_ORM {

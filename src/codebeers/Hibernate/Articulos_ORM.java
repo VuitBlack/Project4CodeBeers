@@ -1,15 +1,10 @@
 package codebeers.Hibernate;
 
 import codebeers.modelo.Articulo;
-import codebeers.modelo.Pedido;
-
 import javax.persistence.*;
-import java.util.List;
-
 @Entity
 @Table(name="Articulos")
 public class Articulos_ORM {
-
     @Id
     @Column(name="id")
     private String id;

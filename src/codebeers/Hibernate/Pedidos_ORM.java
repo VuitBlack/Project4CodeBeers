@@ -1,10 +1,8 @@
 package codebeers.Hibernate;
 
 import codebeers.modelo.Pedido;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
 @Entity
 @Table(name="Pedidos")
 public class Pedidos_ORM {

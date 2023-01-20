@@ -12,7 +12,7 @@ import codebeers.exceptions.*;
 
 public class GestionOS{
 
-    private Controlador controlador;
+    private final Controlador controlador;
     Scanner teclado = new Scanner(System.in);
 
     public GestionOS(){
@@ -20,13 +20,6 @@ public class GestionOS{
     }
 
     public void inicio() {
-/*
-        try {
-            loadSeeders();
-        }catch(OnlineStoreException e){
-            System.out.println(e.getError());
-        }
- */
 
         boolean salir = false;
         char opcion;
@@ -43,21 +36,12 @@ public class GestionOS{
             System.out.println("╚═════════════════ by CodeBeers ═╝");
             opcion = pedirOpcion();
             try{
-                switch (opcion){
-                    case '1':
-                        gestionarMenuArticulos();
-                        break;
-                    case '2':
-                        gestionarMenuClientes();
-                        break;
-                    case '3':
-                        gestionarMenuPedidos();
-                        break;
-                    case '0':
-                        salir = true;
-                        break;
-                    default:
-                        throw new OpcionNoValida();
+                switch (opcion) {
+                    case '1' -> gestionarMenuArticulos();
+                    case '2' -> gestionarMenuClientes();
+                    case '3' -> gestionarMenuPedidos();
+                    case '0' -> salir = true;
+                    default -> throw new OpcionNoValida();
                 }
             }
             catch(OnlineStoreException e){
@@ -85,14 +69,9 @@ public class GestionOS{
         opcion = pedirOpcion();
 
         switch (opcion) {
-            case '1':
-                addArticulo();
-                break;
-            case '2':
-                mostrarLista(controlador.getArticulos());
-                break;
-            default:
-                throw new OpcionNoValida();
+            case '1' -> addArticulo();
+            case '2' -> mostrarLista(controlador.getArticulos());
+            default -> throw new OpcionNoValida();
         }
     }
 
@@ -107,25 +86,18 @@ public class GestionOS{
         opcion = pedirOpcion();
 
         switch (opcion) {
-            case '1':
+            case '1' -> {
                 String nif;
                 System.out.println("NIF del cliente: ");
                 nif = teclado.nextLine();
-//                if(controlador.clienteExiste(nif))
-//                    throw new ElementoYaExiste();
+                if(controlador.clienteExiste(nif))
+                    throw new ElementoYaExiste();
                 addCliente(nif);
-                break;
-            case '2':
-                mostrarLista(controlador.getClientes(""));
-                break;
-            case '3':
-                mostrarLista(controlador.getClientes("Estándar"));
-                break;
-            case '4':
-                mostrarLista(controlador.getClientes("Premium"));
-                break;
-            default:
-                throw new OpcionNoValida();
+            }
+            case '2' -> mostrarLista(controlador.getClientes(""));
+            case '3' -> mostrarLista(controlador.getClientes("Estándar"));
+            case '4' -> mostrarLista(controlador.getClientes("Premium"));
+            default -> throw new OpcionNoValida();
         }
     }
 
@@ -142,26 +114,23 @@ public class GestionOS{
         opcion = pedirOpcion();
 
         switch (opcion) {
-            case '1':
-                addPedido();
-                break;
-            case '2':
+            case '1' -> addPedido();
+            case '2' -> {
                 System.out.println("Introduce el id del pedido");
                 num = Integer.parseInt(teclado.nextLine());
                 controlador.deletePedido(num);
-                break;
-            case '3':
+            }
+            case '3' -> {
                 System.out.println("Indica el nif del cliente, deja en blanco para ver todos los pedidos");
                 nif = teclado.nextLine();
                 mostrarLista(controlador.getPedidos(nif, false));
-                break;
-            case '4':
+            }
+            case '4' -> {
                 System.out.println("Indica el nif del cliente, deja en blanco para ver todos los pedidos");
                 nif = teclado.nextLine();
                 mostrarLista(controlador.getPedidos(nif, true));
-                break;
-            default:
-                throw new OpcionNoValida();
+            }
+            default -> throw new OpcionNoValida();
         }
     }
 
@@ -194,11 +163,11 @@ public class GestionOS{
         System.out.println("Descripción del artículo: ");
         descripcion = teclado.nextLine();
         System.out.println("PVP del artículo: ");
-        pvp = Float.valueOf(teclado.nextLine());
+        pvp = Float.parseFloat(teclado.nextLine());
         System.out.println("Gastos de envío del artículo: ");
-        gastosEnvio = Float.valueOf(teclado.nextLine());
+        gastosEnvio = Float.parseFloat(teclado.nextLine());
         System.out.println("Tiempo de preparación del artículo: ");
-        preparacion = Integer.valueOf(teclado.nextLine());
+        preparacion = Integer.parseInt(teclado.nextLine());
 
         controlador.addArticulo(id, descripcion, pvp, gastosEnvio, preparacion);
     }
@@ -217,7 +186,7 @@ public class GestionOS{
         if(!controlador.articuloExiste(id))
             throw new ElementoNoExiste();
         System.out.println("Cantidad de artículos: ");
-        cantidad = Integer.valueOf(teclado.nextLine());
+        cantidad = Integer.parseInt(teclado.nextLine());
 
         controlador.addPedido(nif, id, cantidad, LocalDateTime.now());
     }
@@ -233,28 +202,5 @@ public class GestionOS{
             }
             System.out.println("==========================================================================");
         }
-    }
-
-    public void loadSeeders() throws OpcionNoValida, ElementoNoExiste{
-        // Add articles
-        controlador.addArticulo("1", "Artículo 1", 11.11f, 6.66f, 1);
-        controlador.addArticulo("2", "Artículo 2", 22.22f, 7.77f, 30);
-        controlador.addArticulo("3", "Artículo 3", 33.33f, 8.88f, 40);
-        controlador.addArticulo("4", "Artículo 4", 44.44f, 9.99f, 50);
-        controlador.addArticulo("5", "Artículo 5", 55.55f, 1.11f, 1);
-
-        // Add clients
-        controlador.addCliente("Cliente 1", "Casa de cliente 1", "11", "cliente1@mail.com", "Estandar");
-        controlador.addCliente("Cliente 2", "Casa de cliente 2", "22", "cliente2@mail.com", "Premium");
-        controlador.addCliente("Cliente 3", "Casa de cliente 3", "33", "cliente3@mail.com", "Estandar");
-        controlador.addCliente("Cliente 4", "Casa de cliente 4", "44", "cliente4@mail.com", "Premium");
-        controlador.addCliente("Cliente 5", "Casa de cliente 5", "55", "cliente5@mail.com", "Estandar");
-
-        // Add orders
-        controlador.addPedido("11", "5", 6, LocalDateTime.now());
-        controlador.addPedido("22", "4", 7, LocalDateTime.now());
-        controlador.addPedido("33", "3", 8, LocalDateTime.now());
-        controlador.addPedido("44", "2", 9, LocalDateTime.now());
-        controlador.addPedido("55", "1", 1, LocalDateTime.now());
     }
 }
